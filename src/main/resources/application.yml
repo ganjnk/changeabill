@@ -1,0 +1,12 @@
+spring:
+  profiles: dev
+
+      
+server:
+  port: 8089
+  
+change:
+  quarter: 100
+  dime: 100
+  nickel: 100
+  penny: 100
