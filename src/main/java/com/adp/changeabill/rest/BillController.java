@@ -3,8 +3,12 @@
  */
 package com.adp.changeabill.rest;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +24,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @RestController
+@Validated
 @Slf4j
 public class BillController {
 	
@@ -27,7 +32,7 @@ public class BillController {
 	private BillService billService;
 
 	@GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ChangeResponse getAChange(@RequestParam long bill) {
+	public ChangeResponse getAChange(@RequestParam @Min(1) @Max(100) long bill) {
 		
 		log.info("Entering changeabill controller");
 		
